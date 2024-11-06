@@ -1,40 +1,40 @@
-
-def cal_grade(mark):
-    if mark >=90:
+def calculate_grade(total_marks):
+    if total_marks >= 90:
         return 'A'
-    elif mark >=82:
+    elif total_marks >= 82:
         return 'B'
-    elif mark >=75:
+    elif total_marks >= 75:
         return 'C'
-    elif mark >=60:
+    elif total_marks >= 60:
         return 'D'
-    elif mark >=50:
+    elif total_marks >= 50:
         return 'P'
     else:
         return 'F'
-    
-def get_student_details():
-    name = input("Enter student's name: ")
-    roll_no = int(input("Enter roll number: "))
-    register_no = input("Enter registration number: ")
-    department = input("Enter department: ")
-    semester = int(input("Enter semester: "))
-    mark = int(input("Enter Mark: "))
 
-    student_details = {
-        "name": name,
-        "roll_no": roll_no,
-        "register_no": register_no,
-        "department": department,
-        "semester": semester,
-        "mark": mark,
-    }
-    
-    grade  = cal_grade(mark)
-    student_details['grade'] = grade
-    return student_details
-student_info = get_student_details()
-print("student information :",student_info)
-print("After Deleting Roll Number: ")
-new_info = {key: value for key, value in student_info.items() if key != 'roll_no'}
-print(new_info)
+name = input("Enter student's name: ")
+roll_number = int(input("Enter roll number: "))
+register_number = input("Enter register number: ")
+department = input("Enter department: ")
+semester = int(input("Enter semester: "))
+
+student_details = {
+    'name': name,
+    'roll_number': roll_number,
+    'register_number': register_number,
+    'department': department,
+    'semester': semester,
+}
+print("Entered student details:", student_details)
+
+total_marks = int(input("Enter total marks: "))
+student_details['total_marks'] = total_marks
+
+grade = calculate_grade(total_marks)
+student_details['grade'] = grade
+
+print("\nUpdated student details : ",student_details)
+
+del student_details['roll_number']
+
+print("\nStudent details after rollno deletion: ",student_details)
